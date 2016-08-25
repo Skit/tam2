@@ -1,10 +1,6 @@
-//var mongoose    = require('mongoose');
 var mongoose    = require('mongoose-promised');
 var config      = require('./configLib');
-var Int32       = require('mongoose-int32');
-var map         = require('mongoose-map')(mongoose);
 
-//mongoose.Promise = global.Promise;
 mongoose.connectQ(config.get('mongoose:uri'));
 var db = mongoose.connection;
 

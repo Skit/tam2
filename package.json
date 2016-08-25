@@ -12,18 +12,13 @@
     "debug": "~2.2.0",
     "ejs": "~2.4.1",
     "express": "~4.13.4",
-    "map": "^1.0.1",
     "mongoose": "~4.5.9",
-    "mongoose-int32": "^0.1.0",
-    "mongoose-map": "^1.1.0",
     "mongoose-promised": "^0.1.0",
     "morgan": "~1.7.0",
-    "mpromise": "^0.5.5",
     "nconf": "~0.8.4",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "cai": "^1.0.2",
     "chai": "^3.5.0",
     "moca": "^0.2.1",
     "qunitjs": "^2.0.1",
