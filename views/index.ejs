@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="/stylesheets/jquery-ui/jquery-ui.css" rel="stylesheet">
+  <link href="/stylesheets/jquery-ui/jquery-ui.theme.css" rel="stylesheet">
+  <link href="/stylesheets/jquery-ui/sortableTask.css" rel="stylesheet">
+  <link href="/stylesheets/main/custom.css" rel="stylesheet">
+  <title><%= title %></title>
+</head>
+<body>
+<div class="container">
+
+  <h1>Task manager - second coming</h1>
+  <div class="row">
+    <div class="col-md-8"><!-- Left col. -->
+      <h2 class="headerTask">Task list</h2>
+      <div class="wrap">
+        <table id="task-list" class="col-md-8">
+          <thead>
+          <tr class="ui-widget-header">
+            <th> </th>
+            <th>Name</th>
+            <th>Priority</th>
+            <th>State</th>
+            <th>Deadline</th>
+            <th> </th>
+          </tr>
+          </thead>
+          <tbody id="sortable" class="ui-widget">
+          <% task.forEach(function(el)  { %>
+            <tr data-task-id="<%=el.id%>">
+              <td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td>
+              <td><%=el.name%></td>
+              <td><%=el.priority%></td>
+              <td><%=el.state%></td>
+              <td><%=el.deadline%></td>
+              <td><a class="del" href="">del</a> | <a class="edit" href="">edit</a></td>
+            </tr>
+          <%  }); %>
+          </tbody >
+        </table>
+      </div>
+    </div><!-- Left col End. -->
+    <div class="col-md-4"><!-- Right col. -->
+      <h2 class="headerTask">Task menu</h2>
+      <button id="create-task" class="btn btn-lg btn-primary">Create new task</button>
+      <br />
+      <button id="save-changes" class="btn btn-lg btn-primary" disabled>Save changes</button>
+      <br />
+      <div id="inform"></div>
+    </div><!-- Right col End. -->
+  </div>
+
+  <!-- iniline form -->
+  <div id="dialog-form" title="Create new task">
+    <p class="validateTips">All form fields are required.</p>
+    <form>
+      <fieldset>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+        <br />
+        <label for="priority">Priority</label>
+        <div class="section">
+          <select name="priority" id="priority" class="text ui-widget-content ui-corner-all">
+            <option value="">—Choose—</option>
+            <option value="Hight">Hight</option>
+            <option value="Middle">Middle</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <label for="state">State</label>
+        <div class="section">
+          <select name="state" id="state" class="text ui-widget-content ui-corner-all">
+            <option value="">—Choose—</option>
+            <option value="New">New</option>
+            <option value="Active">Active</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+        <label for="datepicker">Date</label>
+        <input class="styler text ui-widget-content ui-corner-all" type="text" id="datepicker" name="deadline" placeholder="<%=eachDate%>" />
+        <br />
+        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+      </fieldset>
+    </form>
+  </div> <!-- End iniline Form -->
+
+  <!-- Iniline Delete form -->
+  <div id="dialog-delete" title="Are you sure?">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+      You remove task "<span id="taskName"></span>".
+    </p>
+    <p>
+      <b>This action cannot be undone</b>.
+    </p>
+  </div><!-- End iniline Delete form -->
+
+</div> <!-- /container -->
+<footer class="footer">
+  <div class="container">
+    <p>Короткий карандаш - лучше чем длинный ум.</p>
+  </div>
+</footer>
+
+  <script src="/javascripts/jquery/jquery.js"></script>
+  <script src="/javascripts/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/javascripts/jquery-ui/ajaxReq.js"></script>
+  <script src="/javascripts/jquery-ui/createElementTable.js"></script>
+  <script src="/javascripts/jquery-ui/validation.js"></script>
+  <script src="/javascripts/jquery-ui/creUpTask.js"></script>
+  <script src="/javascripts/jquery-ui/sortableTask.js"></script>
+  <script src="/javascripts/jquery-ui/custom.js"></script>
+  <script src="/javascripts/jquery-ui/deleteTask.js"></script>
+</body>
+</html>

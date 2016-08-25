@@ -1,0 +1,60 @@
+h1
+{
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #D0CFCE;
+    background: #FFF;
+    box-shadow: 0 2px 5px rgba(0,0,0,.05);
+    line-height: 68px;
+    color: #444;
+    text-align: center;
+}
+.headerTask{
+    border-left: 3px solid grey;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+}
+.footer p{
+    color: #777;
+    margin-top: 20px;
+}
+table#task-list thead td,th
+{
+    font-size: 17px;
+}
+table#task-list tbody td
+{
+    border-bottom: 1px solid #000;
+    padding: 5px;
+    font-size: 15px;
+}
+div.wrap{
+    height: 400px;
+    overflow:auto;
+}
+#dialog-delete, #dialog-form{
+    display: none;
+}
+.redElement{
+    background-color: #f1a899;
+}
+.greenElement{
+    background-color: #90EE90;
+}
+.yellowElement{
+    background-color: #ffe188;
+}
+#inform{
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    font-weight: 300;
+    margin-top: 10px;
+}
