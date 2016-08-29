@@ -67,14 +67,6 @@
             creUpDialog.dialog('close');
         }
 
-        /*creUpDialog.dialog({
-            close: function() {
-                $(this).validatorMe('clear', allFields, 'ui-state-error');
-                $(this).validatorMe('tipsField', {defaultTypeText:typeText}, true);
-                if(update) $('tr').removeClass('yellowElement');
-            }
-        });*/
-
         return valid;
     }
 /**

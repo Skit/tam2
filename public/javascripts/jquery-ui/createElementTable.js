@@ -19,7 +19,7 @@
                 bottom =  '<td><a class="del" href=""><span class="ui-state-default ui-state-error ui-corner-all ui-icon ui-icon-closethick"></span></a>\ ' +
                     ' | <a class="edit" href=""><span class="ui-state-default ui-corner-all ui-icon ui-icon-pencil"></span></a></td></tr>';
 
-            for(el in settings.elements){
+            for(var el in settings.elements){
 
                 td += "<td>" + settings.elements[el] + "</td>";
             }
