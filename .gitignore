@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+/npm-debug.log
+/config.json
+.gitignore
+/public/javascripts/jquery-ui/custom.js

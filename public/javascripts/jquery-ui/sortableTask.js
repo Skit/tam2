@@ -1,15 +1,17 @@
+/**
+ * Соритировка элементов таблицы
+ */
 $( function() {
 
-    var s = $('#sortable'),
-        sc = $('#save-changes');
+    var
+        sc = $('#save-changes').button(),
+        s  = $('#sortable').sortable({
+            placeholder: "ui-state-highlight",
+            update: function () {
+                sc.button( "enable" ); // включаем кнопку "сохранить" при изменениях
+            }
+         });
     
-    s.sortable({
-        placeholder: "ui-state-highlight",
-        update: function () {
-            sc.prop('disabled', false);
-        }
-    });
-    //s.disableSelection();
 
     sc.click( function(e) {
 
@@ -20,9 +22,12 @@ $( function() {
            result[i] = task.eq(i).data('task-id');
         }
 
-        result['l'] = length;
+        result['l'] = length; // Отправляем длинну массива в обработчик чтобы не делать еще один цикл
 
         $(this).ajaxReq({url:'/sort', data:result});
+
+        // TODO: кнопка станет неактивной при любом ответе от сервера...
+        sc.button("disable");
 
         e.preventDefault();
     });

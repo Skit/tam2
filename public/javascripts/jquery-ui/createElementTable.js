@@ -16,7 +16,8 @@
             var
                 top = "<tr class='ui-state-disabled'><td><span class=\"ui-icon ui-icon-arrowthick-2-n-s\"></span></td>",
                 td = '';
-                bottom =  "<td><a data-task-id=\" \" href=\"\">del</a>  | <a data-task-id=\" \" href=\"\">edit</a></td></tr>";
+                bottom =  '<td><a class="del" href=""><span class="ui-state-default ui-state-error ui-corner-all ui-icon ui-icon-closethick"></span></a>\ ' +
+                    ' | <a class="edit" href=""><span class="ui-state-default ui-corner-all ui-icon ui-icon-pencil"></span></a></td></tr>';
 
             for(el in settings.elements){
 

@@ -95,13 +95,6 @@
             }
 
         },
-        clear: function(fields, selector){
-
-            if(!typeof fields == "object"){
-                fields = [fields];
-            }
-            fields.removeClass(selector);
-        },
         tipsField: function(options, text){
 
             settings = $.extend({}, defaultOptions, options);
@@ -109,7 +102,7 @@
             var obj = $(settings.tips);
 
             if(text === true){
-                // TODO: добавить контекст
+                
                 obj = obj.text(settings.defaultTypeText);
             }
             else if(text === false){

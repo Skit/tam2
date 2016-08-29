@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="/stylesheets/jquery-ui/jquery-ui.css" rel="stylesheet">
-  <link href="/stylesheets/jquery-ui/jquery-ui.theme.css" rel="stylesheet">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  --><link href="/stylesheets/jquery-ui/jquery-ui.css" rel="stylesheet">
+   <link href="/stylesheets/jquery-ui/jquery-ui.theme.css" rel="stylesheet">
   <link href="/stylesheets/jquery-ui/sortableTask.css" rel="stylesheet">
   <link href="/stylesheets/main/custom.css" rel="stylesheet">
   <title><%= title %></title>
@@ -18,7 +18,7 @@
     <div class="col-md-8"><!-- Left col. -->
       <h2 class="headerTask">Task list</h2>
       <div class="wrap">
-        <table id="task-list" class="col-md-8">
+        <table id="task-list">
           <thead>
           <tr class="ui-widget-header">
             <th> </th>
@@ -37,7 +37,8 @@
               <td><%=el.priority%></td>
               <td><%=el.state%></td>
               <td><%=el.deadline%></td>
-              <td><a class="del" href="">del</a> | <a class="edit" href="">edit</a></td>
+              <td><a class="del" href=""><span class="ui-state-default ui-state-error ui-corner-all ui-icon ui-icon-closethick"></span></a>
+                | <a class="edit" href=""><span class="ui-state-default ui-corner-all ui-icon ui-icon-pencil"></span></a></td>
             </tr>
           <%  }); %>
           </tbody >
@@ -48,31 +49,31 @@
       <h2 class="headerTask">Task menu</h2>
       <button id="create-task" class="btn btn-lg btn-primary">Create new task</button>
       <br />
-      <button id="save-changes" class="btn btn-lg btn-primary" disabled>Save changes</button>
+      <button id="save-changes" class="btn btn-lg btn-primary" disabled>Save sorting</button>
       <br />
+      <button id="clock">Январь, 01.1970 00:00</button>
       <div id="inform"></div>
+      <div id="loader"><img src="/images/loader.gif" /></div>
     </div><!-- Right col End. -->
   </div>
 
-  <!-- iniline form -->
+  <!-- inline forms -->
   <div id="dialog-form" title="Create new task">
     <p class="validateTips">All form fields are required.</p>
     <form>
       <fieldset>
-        <label for="name">Name</label>
+        <label for="name"><span>Name</span>
         <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
-        <br />
-        <label for="priority">Priority</label>
-        <div class="section">
+        </label>
+        <label for="priority"><span>Priority</span>
           <select name="priority" id="priority" class="text ui-widget-content ui-corner-all">
             <option value="">—Choose—</option>
             <option value="Hight">Hight</option>
             <option value="Middle">Middle</option>
             <option value="Low">Low</option>
           </select>
-        </div>
-        <label for="state">State</label>
-        <div class="section">
+        </label>
+        <label for="state"><span>State</span>
           <select name="state" id="state" class="text ui-widget-content ui-corner-all">
             <option value="">—Choose—</option>
             <option value="New">New</option>
@@ -80,10 +81,10 @@
             <option value="Resolved">Resolved</option>
             <option value="Closed">Closed</option>
           </select>
-        </div>
-        <label for="datepicker">Date</label>
-        <input class="styler text ui-widget-content ui-corner-all" type="text" id="datepicker" name="deadline" placeholder="<%=eachDate%>" />
-        <br />
+        </label>
+        <label for="datepicker"><span>Date</span></label>
+        <input class="styler text ui-widget-content ui-corner-all" type="text" id="datepicker" name="deadline" placeholder="<%=eachDate%>" value=""/>
+
         <!-- Allow form submission with keyboard without duplicating the dialog button -->
         <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
       </fieldset>
@@ -117,5 +118,6 @@
   <script src="/javascripts/jquery-ui/sortableTask.js"></script>
   <script src="/javascripts/jquery-ui/custom.js"></script>
   <script src="/javascripts/jquery-ui/deleteTask.js"></script>
+  <script src="/javascripts/jquery-ui/clock.js"></script>
 </body>
 </html>

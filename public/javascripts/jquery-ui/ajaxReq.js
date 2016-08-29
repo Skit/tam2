@@ -2,7 +2,7 @@
  * Created by Micro on 22.08.2016.
  */
 (function( $ ){
-
+// TODO: переделать на промисы
     var defaultOptions = {
         successScore: 3000,
         successClass: 'ui-state-highlight ui-corner-all',
@@ -10,6 +10,7 @@
         errorScore: 3000,
         errorClass: 'ui-state-error ui-corner-all',
         errorText: 'Error',
+        loaderEl: '#loader',
         informEl: '#inform',
         method: 'POST',
         type: 'json',
@@ -20,9 +21,13 @@
     var methods = {
         init : function( options ) {
 
-            settings = $.extend({}, defaultOptions, options);
+            var settings = $.extend({}, defaultOptions, options);
 
-            var inform = $(settings.informEl);
+            var
+                // Сообщение об успехе или ошибке
+                inform = $(settings.informEl);
+                // Анимация при ожидании ответа от сервера
+                loader = $(settings.loaderEl).show();
 
             var resp = $.ajax(
                 {
@@ -51,6 +56,7 @@
                     }
                 });
 
+            loader.hide();
             return (settings.async)? 'async' : resp.status;
         } // End init();
     };

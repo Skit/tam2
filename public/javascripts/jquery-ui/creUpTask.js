@@ -1,11 +1,15 @@
 /**
  * Created by Micro on 24.08.2016.
  */
-// TODO: при редактировании, если очистить input и спровоцировать валидацию. Далее закрыть и открыть окно редактирования
-// Input будет пустым.
-// TODO: сделать общие настройки для параметров окна dialog
 (function( $ )
 {
+    var 
+        dialogHeight = 400,
+        dialogWeight = 450,
+    /*
+     Для очистки сообщения валидации
+     */
+        typeText     = $(this).validatorMe().defaultTypeText;
     /**
      * Сохраняет задачу при создании и редакировании. Выполняет валидацию полей
      * @param ur
@@ -14,8 +18,8 @@
      * @returns {boolean}
      */
     function saveTask(ur, update, id) {
-
         var
+            valid       = true,
         /*
          Поля html формы
          */
@@ -23,18 +27,12 @@
             priority    = $("#priority", creUpDialog),
             state       = $("#state", creUpDialog),
             datepicker  = $("#datepickerDialog", creUpDialog),
-        /*
-         Для очистки сообщений валидации
-         */
-            allFields   = $([]).add(name).add(priority).add(state).add(datepicker),
-            typeText    = $(this).validatorMe().defaultTypeText;
 
-        var valid = true;
         /*
         Блок валидации полей. Отрабатывает при редактировании и добавлении
         TODO: некоректно работает добавление желтого фона к активному полю. Подсвечивается первое поле, подсветка не снимается
          */
-        valid = valid && $(this).validatorMe('checkLength', {objEl:name, nameEl:"Name", max:20});
+        valid = valid && $(this).validatorMe('checkLength', {objEl:name, nameEl:"Name", max:100});
         valid = valid && $(this).validatorMe('checkSelect', {objEl:priority, nameEl:"Priority"});
         valid = valid && $(this).validatorMe('checkSelect', {objEl:state, nameEl:"State"});
 
@@ -65,24 +63,24 @@
             {
                 updateElement(update, newTask);
             }
+
+            creUpDialog.dialog('close');
         }
 
-        creUpDialog.dialog({
+        /*creUpDialog.dialog({
             close: function() {
                 $(this).validatorMe('clear', allFields, 'ui-state-error');
                 $(this).validatorMe('tipsField', {defaultTypeText:typeText}, true);
                 if(update) $('tr').removeClass('yellowElement');
-                creUpDialog.dialog('destroy');
             }
-        });
+        });*/
 
-        creUpDialog.dialog('close');
         return valid;
     }
 /**
  * Edit task
  */
-$("a.edit").on("click", {msg:'Spoon!'}, function (e) {
+$("a.edit").on("click", function (e) {
 
     e.preventDefault();
 
@@ -101,8 +99,8 @@ $("a.edit").on("click", {msg:'Spoon!'}, function (e) {
 
     creUpDialog = $("#dialog-form").clone(true).dialog({
         autoOpen: false,
-        height: 300,
-        width: 350,
+        height: dialogHeight,
+        width: dialogWeight,
         modal: true,
         buttons: {
             "Save a task": function () {
@@ -120,12 +118,17 @@ $("a.edit").on("click", {msg:'Spoon!'}, function (e) {
 
             selectSelect(task.priority.text(), $('select[id=priority]', creUpDialog));
             selectSelect(task.state.text(), $('select[id=state]', creUpDialog));
+        },
+        close: function () {
+            edEl.removeClass('yellowElement');
+            clearForm();
+            creUpDialog.dialog('destroy'); // иначе дата не будет добавлятся в поле, после закрытия окна dialog
         }
     });
 
     datepickerInDialog(creUpDialog);
-
     creUpDialog.dialog('open');
+
 });
 /**
  * Create new task
@@ -134,8 +137,8 @@ $("#create-task").button().on("click", function () {
 
     creUpDialog = $("#dialog-form").clone(true).dialog({
         autoOpen: false,
-        height: 300,
-        width: 350,
+        height: dialogHeight,
+        width: dialogWeight,
         modal: true,
         buttons: {
             "Create a task":  function () {
@@ -144,6 +147,10 @@ $("#create-task").button().on("click", function () {
             Cancel: function () {
                 creUpDialog.dialog("close");
             }
+        },
+        close: function () {
+            clearForm();
+            creUpDialog.dialog('destroy');
         },
         title: "Create a new task"
     });
@@ -168,29 +175,7 @@ $("#create-task").button().on("click", function () {
 
             if(value == option[i].getAttribute('value'))
                 option[i].setAttribute('selected', 'selected');
-        }/*
-        select.remove();
-        */
-        /* var i = 1, option = select.get(0),  length = option.length, html = '', firstOption = '', options = '';
-
-        for ( ; i < length; i++ ){
-
-            if(value == option[i].getAttribute('value')){
-
-                firstOption = '<option value="'+ i +'">'+ value +'</option>';
-            }
-            else {
-                options += '<option value="'+ i +'">'+ option[i].getAttribute('value') +'</option>';
-            }
         }
-
-        html = firstOption + options;
-
-        select.html(html);
-        */
-        /*select.get(0).setAttribute('disabled', 'disabled');
-        select.get(0).setAttribute('style', 'display:none');
-        select.get(0).setAttribute('data-type', 'edit'); */
     }
 
     /**
@@ -207,7 +192,7 @@ $("#create-task").button().on("click", function () {
     }
 
     /**
-     * Добавляет новую елемент в таблицу задач при сохранении в БД
+     * Добавляет новый елемент в таблицу задач при сохранении в БД
      * @param elements
      */
     function insertElement(elements){
@@ -231,6 +216,13 @@ $("#create-task").button().on("click", function () {
             minDate: new Date(),
             dateFormat: "dd.mm.yy"
         });
+    }
+
+    /**
+     * Функция очищения формы от изменений
+     */
+    function clearForm(){
+        $(this).validatorMe('tipsField', {defaultTypeText:typeText}, true);
     }
 
 })( jQuery );

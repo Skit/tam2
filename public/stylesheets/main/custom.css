@@ -17,23 +17,28 @@ h1
 .footer{
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 99%;
     height: 60px;
     background-color: #f5f5f5;
 }
 .footer p{
     color: #777;
-    margin-top: 20px;
+    padding: 10px 0px 10px 10px;
 }
 table#task-list thead td,th
 {
     font-size: 17px;
+    padding: 15px;
+    text-align: left;
 }
 table#task-list tbody td
 {
     border-bottom: 1px solid #000;
     padding: 5px;
     font-size: 15px;
+}
+table#task-list{
+    width:99%;
 }
 div.wrap{
     height: 400px;
@@ -52,9 +57,76 @@ div.wrap{
     background-color: #ffe188;
 }
 #inform{
-    width: 200px;
+    width: 150px;
     height: 30px;
     padding: 5px;
     font-weight: 300;
     margin-top: 10px;
+    display:none;
+}
+#loader{
+    display: none;
+}
+.col-md-8{
+    margin-right: 240px;
+    min-height: 100px;
+    margin-left: 10px;
+}
+.col-md-4{
+    position: absolute;
+    top: 90px;
+    right: 0;
+    width: 200px;
+    height: 200px;
+}
+.col-md-4 button{
+    margin-bottom: 10px;
+    width: 165px;
+}
+#dialog-form fieldset{
+    border:0;
+}
+#dialog-form p{
+    margin: 5px 0 10px 0;
+}
+#dialog-form form {
+    background: #F7F7F7;
+    padding-right: 15px;
+    color: #888;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #E4E4E4;
+}
+#dialog-form form label {
+    display: block;
+    margin: 0px;
+}
+#dialog-form form label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #888;
+}
+#dialog-form form input[type="text"], #dialog-form form select {
+    border: 1px solid #DADADA;
+    color: #888;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 67.5%;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+#dialog-form form select {
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 70%;
+    height: 35px;
+    line-height: 25px;
 }
