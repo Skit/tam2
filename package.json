@@ -12,6 +12,12 @@
     "debug": "~2.2.0",
     "ejs": "~2.4.1",
     "express": "~4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-express": "^0.3.5",
+    "gulp-jshint": "^2.0.1",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.3",
     "mongoose": "~4.5.9",
     "mongoose-promised": "^0.1.0",
     "morgan": "~1.7.0",
@@ -20,8 +26,11 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "connect-livereload": "^0.5.4",
+    "gulp-minify-css": "^1.2.4",
     "moca": "^0.2.1",
     "qunitjs": "^2.0.1",
-    "should": "^11.1.0"
+    "should": "^11.1.0",
+    "tiny-lr": "^0.2.1"
   }
 }
