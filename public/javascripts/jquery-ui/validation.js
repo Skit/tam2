@@ -27,11 +27,11 @@
 
             var objLength = settings.objEl.val().length;
 
-            if(settings.max == 0 && objLength != settings.min){
+            if(settings.max === 0 && objLength != settings.min){
                 settings.objEl.addClass( settings.errorClass);
                 methods.updateTips( settings.smsReplaceMin, [settings.nameEl, settings.min] );
             }
-            else if ( (objLength > settings.max || objLength < settings.min) && settings.max != 0) {
+            else if ( (objLength > settings.max || objLength < settings.min) && settings.max !== 0) {
                 settings.objEl.addClass( settings.errorClass);
                 methods.updateTips( settings.smsReplaceMinMax, [settings.name, settings.min, settings.max] );
                 return false;

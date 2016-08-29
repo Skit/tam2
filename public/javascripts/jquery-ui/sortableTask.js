@@ -22,7 +22,7 @@ $( function() {
            result[i] = task.eq(i).data('task-id');
         }
 
-        result['l'] = length; // Отправляем длинну массива в обработчик чтобы не делать еще один цикл
+        result.l = length; // Отправляем длинну массива в обработчик чтобы не делать еще один цикл
 
         $(this).ajaxReq({url:'/sort', data:result});
 

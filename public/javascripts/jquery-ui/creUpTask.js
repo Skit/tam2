@@ -26,7 +26,7 @@
             name        = $("#name", creUpDialog),
             priority    = $("#priority", creUpDialog),
             state       = $("#state", creUpDialog),
-            datepicker  = $("#datepickerDialog", creUpDialog),
+            datepicker  = $("#datepickerDialog", creUpDialog);
 
         /*
         Блок валидации полей. Отрабатывает при редактировании и добавлении
@@ -104,7 +104,7 @@ $("a.edit").on("click", function (e) {
         modal: true,
         buttons: {
             "Save a task": function () {
-                saveTask('/upd', task, id)
+                saveTask('/upd', task, id);
             },
             Cancel: function () {
                 edEl.removeClass('yellowElement');
@@ -185,7 +185,7 @@ $("#create-task").button().on("click", function () {
      */
     function updateElement(elements, newData) {
 
-        for (k in newData) {
+        for (var k in newData) {
 
             elements[k].text(newData[k]);
         }

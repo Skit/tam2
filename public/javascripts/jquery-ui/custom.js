@@ -15,4 +15,4 @@ window.onload = function () {
     var result = date -test;
     html = date+'<br />'+test+'<br />'+result;
     document.getElementById("date").innerHTML = html;*/
-}
+};
